@@ -21,32 +21,21 @@ function HomeScreen({navigation}: {navigation: any}) {
           style={{width: 250, height:250, marginTop:10, marginBottom:10}}
         />
       </View>
-      <View style = {styles.centeralign}>
-        <Text style = {styles.text}>선택 화면 - 센터인증 또는 자체 인증</Text>
-      </View>
-      
       <View style = {styles.margin}>
         <Button
           color = {Color.purple}
-          title = "센터 인증"
+          title = "계좌 생성"
           onPress={()=>
-            navigation.navigate('center')}
+            navigation.navigate('계좌 생성')}
             //CenterAuthHome으로
         />
-        {/* <TouchableOpacity
-          style={styles.btn}
-          onPress={()=>
-            navigation.navigate('center')}
-        >
-          <Text style={styles.btntext}>센터 인증</Text>
-        </TouchableOpacity> */}
       </View>
       <View style = {styles.margin}>
         <Button
           color = {Color.purple}
-          title = "자체 인증"
+          title = "계좌 조회"
           onPress={()=>
-            navigation.navigate('self')}
+            navigation.navigate('계좌 조회')}
             //SelfAuthHome으로
         />
       </View>  
