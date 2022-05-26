@@ -21,7 +21,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <View style = {styles.marginBottom}>
             <Text style={styles.textbold}>계좌번호</Text>
             <TextInput style={styles.textinput}
-                placeholder="받으실 분의 6자리 계좌번호를 입력하세요."
+                placeholder="받으실 분의 계좌번호 6자리를 입력하세요."
                 keyboardType='numeric' //키보드 종류
             />
         </View>
