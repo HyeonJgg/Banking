@@ -1,6 +1,6 @@
 // import 'react-native-gesture-handler';
 import React,{Component, ReactElement, useState} from 'react';
-import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
+import { StyleSheet,View,ScrollView,Text,Button, TextInput } from 'react-native';
 import firestore from'@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import unregisterNativeAndroidModule from '@react-native-community/cli-platform-android/build/link/unregisterNativeModule';
@@ -32,7 +32,7 @@ function CreateAccount({navigation}: {navigation: any}) {
     setbalance('');
   };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* <View style = {styles.centeralign}>
           <Text style={styles.text}>망고페이</Text>
       </View> */}
@@ -85,7 +85,7 @@ function CreateAccount({navigation}: {navigation: any}) {
           }}
         />  
       </View>      
-    </View>
+    </ScrollView>
   );
 };
 
