@@ -4,7 +4,6 @@ import React,{Component, ReactElement, useState} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import firestore from'@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
-import UserList from './user/users'
 import unregisterNativeAndroidModule from '@react-native-community/cli-platform-android/build/link/unregisterNativeModule';
 
 const Color = {
@@ -54,18 +53,18 @@ function CreateAccount({navigation}: {navigation: any}) {
   };
   return (
     <View style={styles.container}>
-        {/* <View style = {styles.centeralign}>
-            <Text style={styles.text}>망고페이</Text>
-        </View> */}
-        <View style = {styles.marginBottom}>
-          <Text style={styles.textbold}>계좌번호</Text>
-          <TextInput style={styles.textinput}
-            placeholder="6자리 숫자를 입력하세요."
-            keyboardType='numeric' //키보드 종류
-            value={addacc}
-            onChange={e=>setacc(e.nativeEvent.text)}
-          />
-        </View>
+      {/* <View style = {styles.centeralign}>
+          <Text style={styles.text}>망고페이</Text>
+      </View> */}
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>계좌번호</Text>
+        <TextInput style={styles.textinput}
+          placeholder="6자리 숫자를 입력하세요."
+          keyboardType='numeric' //키보드 종류
+          value={addacc}
+          onChange={e=>setacc(e.nativeEvent.text)}
+        />
+      </View>
         <View style = {styles.marginBottom}>
           <Text style={styles.textbold}>이름</Text>
           <TextInput style={styles.textinput}
@@ -75,35 +74,35 @@ function CreateAccount({navigation}: {navigation: any}) {
             onChange={e=>setname(e.nativeEvent.text)}
           />
         </View>
-        <View style = {styles.marginBottom}>
-          <Text style={styles.textbold}>비밀번호</Text>
-          <TextInput style={styles.textinput}
-            placeholder="비밀번호 4자리를 입력하세요."
-            keyboardType='numeric' //키보드 종류
-            value={addpass}
-            onChange={e=>setpass(e.nativeEvent.text)}
-          />
-        </View>
-        <View style = {styles.marginBottom}>
-          <Text style={styles.textbold}>초기잔액</Text>
-          <TextInput style={styles.textinput}
-            placeholder="초기 잔액을 설정하세요."
-            keyboardType='numeric' //키보드 종류
-            value={addbalance}
-            onChange={e=>setbalance(e.nativeEvent.text)}
-          />
-        </View>
-        <View style = {styles.marginTop}>
-          <Button
-            color = {Color.purple}
-            title = "계좌 생성하기"
-            onPress={(e)=>{
-              e.preventDefault();
-              createUsers();
-              navigation.navigate('계좌 생성 완료');
-            }}
-          />  
-        </View>      
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>비밀번호</Text>
+        <TextInput style={styles.textinput}
+          placeholder="비밀번호 4자리를 입력하세요."
+          keyboardType='numeric' //키보드 종류
+          value={addpass}
+          onChange={e=>setpass(e.nativeEvent.text)}
+        />
+      </View>
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>초기잔액</Text>
+        <TextInput style={styles.textinput}
+          placeholder="초기 잔액을 설정하세요."
+          keyboardType='numeric' //키보드 종류
+          value={addbalance}
+          onChange={e=>setbalance(e.nativeEvent.text)}
+        />
+      </View>
+      <View style = {styles.marginTop}>
+        <Button
+          color = {Color.purple}
+          title = "계좌 생성하기"
+          onPress={(e)=>{
+            e.preventDefault();
+            createUsers();
+            navigation.navigate('계좌 생성 완료');
+          }}
+        />  
+      </View>      
     </View>
   );
 };

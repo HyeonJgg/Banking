@@ -12,25 +12,25 @@ function CompleteCreate({navigation}: {navigation: any}) {
 
   return (
     <View style={styles.container}>
-        <View style = {styles.centeralign}>
-            <Text style={styles.textbold}>새로운 계좌가 생성되었습니다.</Text>
-        </View>
-        <View style = {styles.marginBottom}>
-            <Text style={styles.textbold}>계좌번호</Text>
-            <Text style={styles.text}>계좌번호 출력</Text>
-        </View>
-        <View style = {styles.marginBottom}>
-            <Text style={styles.textbold}>이름</Text>
-            <Text style={styles.text}>이름 출력</Text>
-        </View>
-        <View style = {styles.marginTop}>
-            <Button
-                color = {Color.purple}
-                title = "확인 완료"
-                onPress={()=>
-                    navigation.navigate('Home')}
-            />  
-        </View>      
+      <View style = {styles.centeralign}>
+        <Text style={styles.textbold}>새로운 계좌가 생성되었습니다.</Text>
+      </View>
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>계좌번호</Text>
+        <Text style={styles.text}>계좌번호 출력</Text>
+      </View>
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>이름</Text>
+        <Text style={styles.text}>이름 출력</Text>
+      </View>
+      <View style = {styles.marginTop}>
+        <Button
+            color = {Color.purple}
+            title = "확인 완료"
+            onPress={()=>
+                navigation.navigate('Home')}
+        />  
+      </View>      
     </View>
   );
 }

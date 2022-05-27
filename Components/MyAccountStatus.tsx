@@ -13,24 +13,24 @@ function CheckAccount({navigation}: {navigation: any}) {
 
   return (
     <View style={styles.container}>
-        <View style = {styles.marginBottom}>
-            <Text style={styles.textbold}>잔고 현황</Text>
-            <Text style={styles.text}>잔고 출력</Text>
-        </View>
-        <View style = {styles.marginTop}>
-            <Button
-                color = {Color.purple}
-                title = "송금"
-                onPress={()=>
-                    navigation.navigate('송금')}
-            />
-        </View>  
-        <View style = {styles.marginTop}>
-            <Button
-                color = {Color.purple}
-                title = "거래내역"
-            />
-        </View>
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>잔고 현황</Text>
+        <Text style={styles.text}>잔고 출력</Text>
+      </View>
+      <View style = {styles.marginTop}>
+        <Button
+          color = {Color.purple}
+          title = "송금"
+          onPress={()=>
+            navigation.navigate('송금')}
+        />
+      </View>  
+      <View style = {styles.marginTop}>
+        <Button
+          color = {Color.purple}
+          title = "거래내역"
+        />
+      </View>
     </View>
   );
 }

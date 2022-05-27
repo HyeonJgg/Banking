@@ -13,18 +13,10 @@ import Complete from './Components/CompleteCreate'
 import CheckAcc from './Components/CheckAccount'
 import MyAcc from './Components/MyAccountStatus'
 import Remit from './Components/Remit'
-import MyTabs from './Components/Bottom_Tab';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function HomeTab() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name='Home' component={HomeScreen} />
-    </Tab.Navigator>
-  )
-}
 function App() { 
     return(
     <NavigationContainer>
@@ -35,9 +27,6 @@ function App() {
         <Stack.Screen name='계좌 조회' component={CheckAcc}/>
         <Stack.Screen name='잔고 현황' component={MyAcc}/>
         <Stack.Screen name='송금' component={Remit}/>
-        <Stack.Screen name='Tabs' component={HomeTab}
-          options={{headerShown: false}}/>
-        {/* <Stack.Screen name="Tabs" component={MyTabs}/> */}
       </Stack.Navigator>
     </NavigationContainer>
     )
