@@ -1,8 +1,5 @@
-//fragement_center_auth.xml
-
-import React,{Component, ReactElement} from 'react';
-
 import 'react-native-gesture-handler';
+import React,{Component, ReactElement} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { color } from 'react-native-reanimated';
