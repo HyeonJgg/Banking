@@ -9,26 +9,7 @@ import unregisterNativeAndroidModule from '@react-native-community/cli-platform-
 const Color = {
   purple : "#dda0dd",
 }
-// function DB(){
-//   const users = firestore().collection('users');
-//     const [addacc, setacc] = useState('') // Hook
-//     const [addname, setname] = useState('')
-//     const [addpass, setpass] = useState('')
-//     const [addbalance, setbalance] = useState('')
-//   function createUsers(){
-//     users.add({
-//       account : addacc,
-//       name : addname,
-//       password : addpass,
-//       initbalance : addbalance
-//     })
-//     setacc('');
-//     setname('');
-//     setpass('');
-//     setbalance('');
-//   }
-// }
-    
+
 function CreateAccount({navigation}: {navigation: any}) {
   // const navigation = useNavigation();
 
