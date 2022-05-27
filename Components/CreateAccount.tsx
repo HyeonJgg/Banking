@@ -1,5 +1,4 @@
-
-import 'react-native-gesture-handler';
+// import 'react-native-gesture-handler';
 import React,{Component, ReactElement, useState} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import firestore from'@react-native-firebase/firestore';
@@ -41,6 +40,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <Text style={styles.textbold}>계좌번호</Text>
         <TextInput style={styles.textinput}
           placeholder="6자리 숫자를 입력하세요."
+          maxLength={6}
           keyboardType='numeric' //키보드 종류
           value={addacc}
           onChange={e=>setacc(e.nativeEvent.text)}
@@ -59,6 +59,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <Text style={styles.textbold}>비밀번호</Text>
         <TextInput style={styles.textinput}
           placeholder="비밀번호 4자리를 입력하세요."
+          maxLength={4}
           keyboardType='numeric' //키보드 종류
           value={addpass}
           onChange={e=>setpass(e.nativeEvent.text)}

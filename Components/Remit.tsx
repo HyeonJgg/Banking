@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler';
+// import 'react-native-gesture-handler';
 import React,{Component, ReactElement} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +19,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <Text style={styles.textbold}>계좌번호</Text>
         <TextInput style={styles.textinput}
             placeholder="받으실 분의 계좌번호 6자리를 입력하세요."
+            maxLength={6}
             keyboardType='numeric' //키보드 종류
         />
       </View>
@@ -33,6 +34,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <Text style={styles.textbold}>비밀번호</Text>
         <TextInput style={styles.textinput}
             placeholder="비밀번호 4자리를 입력하세요."
+            maxLength={4}
             keyboardType='numeric' //키보드 종류
         />
       </View>
