@@ -1,5 +1,5 @@
+// import 'react-native-gesture-handler';
 import React,{Component, ReactElement} from 'react';
-import 'react-native-gesture-handler';
 import { StyleSheet,View,Text,Button,TouchableOpacity, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { color } from 'react-native-reanimated';
