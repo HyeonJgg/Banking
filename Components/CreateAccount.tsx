@@ -33,9 +33,6 @@ function CreateAccount({navigation}: {navigation: any}) {
   };
   return (
     <ScrollView style={styles.container}>
-      {/* <View style = {styles.centeralign}>
-          <Text style={styles.text}>망고페이</Text>
-      </View> */}
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>계좌번호</Text>
         <TextInput style={styles.textinput}
@@ -43,7 +40,7 @@ function CreateAccount({navigation}: {navigation: any}) {
           maxLength={6}
           keyboardType='numeric' //키보드 종류
           value={addacc}
-          onChange={e=>setacc(e.nativeEvent.text)}
+          onChange={e=>setacc(e.nativeEvent.text)} //현재 입력되는 값(없으면 입력 제대로 안됨)
         />
       </View>
         <View style = {styles.marginBottom}>
@@ -52,7 +49,7 @@ function CreateAccount({navigation}: {navigation: any}) {
             placeholder="이름을 입력하세요."
             // keyboardType='numeric' //키보드 종류
             value={addname}
-            onChange={e=>setname(e.nativeEvent.text)}
+            onChange={e=>setname(e.nativeEvent.text)} 
           />
         </View>
       <View style = {styles.marginBottom}>
@@ -79,7 +76,7 @@ function CreateAccount({navigation}: {navigation: any}) {
           color = {Color.purple}
           title = "계좌 생성하기"
           onPress={(e)=>{
-            e.preventDefault();
+            e.preventDefault(); // 이벤트 기본 기능 방지
             createUsers();
             navigation.navigate('계좌 생성 완료');
           }}
