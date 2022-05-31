@@ -1,6 +1,6 @@
 // import 'react-native-gesture-handler';
 import React,{Component, ReactElement, useState} from 'react';
-import { StyleSheet,View,ScrollView,Text,Button, TextInput } from 'react-native';
+import { StyleSheet,View,ScrollView,Text,Button, TextInput, Alert } from 'react-native';
 import firestore from'@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import unregisterNativeAndroidModule from '@react-native-community/cli-platform-android/build/link/unregisterNativeModule';
@@ -20,16 +20,27 @@ function CreateAccount({navigation}: {navigation: any}) {
   const users = firestore().collection('users');
 
   function createUsers() {
-    users.add({
-      account : addacc,
-      name : addname,
-      password : addpass,
-      initbalance : addbalance
-    })
-    setacc('');
-    setname('');
-    setpass('');
-    setbalance('');
+    if(addacc == ''){
+      Alert.alert('계좌번호를 입력해주세요.');
+    }else if(addname == ''){
+      Alert.alert('이름을 입력해주세요.');
+    }else if(addpass == ''){
+      Alert.alert('비밀번호를 입력해주세요.');
+    }else if(addbalance == ''){
+      Alert.alert('초기잔액을 설정해주세요.');
+    }else{
+      users.add({
+        account : addacc,
+        name : addname,
+        password : addpass,
+        initbalance : addbalance
+      })
+      setacc('');
+      setname('');
+      setpass('');
+      setbalance('');
+      navigation.navigate('계좌 생성 완료');
+    }
   };
   return (
     <ScrollView style={styles.container}>
@@ -78,7 +89,6 @@ function CreateAccount({navigation}: {navigation: any}) {
           onPress={(e)=>{
             e.preventDefault(); // 이벤트 기본 기능 방지
             createUsers();
-            navigation.navigate('계좌 생성 완료');
           }}
         />  
       </View>      
