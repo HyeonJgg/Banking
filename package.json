@@ -12,8 +12,13 @@
   "dependencies": {
     "@react-native-community/cli-platform-android": "^7.0.1",
     "@react-native-community/masked-view": "^0.1.11",
+<<<<<<< HEAD
+    "@react-native-firebase/app": "^14.11.0",
+    "@react-native-firebase/firestore": "^14.11.0",
+=======
     "@react-native-firebase/app": "^14.10.1",
     "@react-native-firebase/firestore": "^14.10.1",
+>>>>>>> edcfd27f76d7e2293b5dd3b750e2612e1377e603
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
