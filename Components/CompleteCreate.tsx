@@ -2,6 +2,7 @@
 import React,{Component, ReactElement} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {newacc, newname} from './CreateAccount';
 
 const Color = {
   purple : "#dda0dd",
@@ -17,11 +18,11 @@ function CompleteCreate({navigation}: {navigation: any}) {
       </View>
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>계좌번호</Text>
-        <Text style={styles.text}>계좌번호 출력</Text>
+        <Text style={styles.text}>{newacc}</Text>
       </View>
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>이름</Text>
-        <Text style={styles.text}>이름 출력</Text>
+        <Text style={styles.text}>{newname}</Text>
       </View>
       <View style = {styles.marginTop}>
         <Button
