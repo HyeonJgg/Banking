@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
   container :{
     flex:1,
     padding:10
-    // alignItems:'center',
-    // justifyContent:'center',
   },
   centeralign:{
     alignItems:'center', // 가로 가운데 정렬
