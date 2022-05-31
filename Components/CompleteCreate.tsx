@@ -2,7 +2,7 @@
 import React,{Component, ReactElement} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {newacc, newname} from './CreateAccount';
+import {newacc, newname, newinit} from './CreateAccount';
 
 const Color = {
   purple : "#dda0dd",
@@ -14,7 +14,7 @@ function CompleteCreate({navigation}: {navigation: any}) {
   return (
     <View style={styles.container}>
       <View style = {styles.centeralign}>
-        <Text style={styles.textbold}>새로운 계좌가 생성되었습니다.</Text>
+        <Text style={styles.textbold}>계좌가 생성되었습니다.</Text>
       </View>
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>계좌번호</Text>
@@ -23,6 +23,10 @@ function CompleteCreate({navigation}: {navigation: any}) {
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>이름</Text>
         <Text style={styles.text}>{newname}</Text>
+      </View>
+      <View style = {styles.marginBottom}>
+        <Text style={styles.textbold}>현재 잔액</Text>
+        <Text style={styles.text}>{newinit}</Text>
       </View>
       <View style = {styles.marginTop}>
         <Button

@@ -9,9 +9,12 @@ const Color = {
   purple : "#dda0dd",
 }
 
+let newacc = ''
+let newname = ''
+let newinit = ''
+
 function CreateAccount({navigation}: {navigation: any}) {
   // const navigation = useNavigation();
-
   const [addacc, setacc] = useState(''); // Hook
   const [addname, setname] = useState('');
   const [addpass, setpass] = useState('');
@@ -35,6 +38,9 @@ function CreateAccount({navigation}: {navigation: any}) {
         password : addpass,
         initbalance : addbalance
       })
+      newacc = addacc;
+      newname = addname;
+      newinit = addbalance;
       setacc('');
       setname('');
       setpass('');
@@ -100,8 +106,6 @@ const styles = StyleSheet.create({
   container :{
     flex:1,
     padding:10
-    // alignItems:'center',
-    // justifyContent:'center',
   },
   centeralign:{
     alignItems:'center', // 가로 가운데 정렬
@@ -146,3 +150,4 @@ const styles = StyleSheet.create({
 })
 
 export default CreateAccount
+export { newacc, newname, newinit}
