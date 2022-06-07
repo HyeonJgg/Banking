@@ -1,9 +1,7 @@
 // import 'react-native-gesture-handler';
 import React,{Component, ReactElement} from 'react';
 import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { color } from 'react-native-reanimated';
-
+import {balance} from './CheckAccount';
 const Color = {
   purple : "#dda0dd",
 }
@@ -15,7 +13,7 @@ function CheckAccount({navigation}: {navigation: any}) {
     <View style={styles.container}>
       <View style = {styles.marginBottom}>
         <Text style={styles.textbold}>잔고 현황</Text>
-        <Text style={styles.text}>잔고 출력</Text>
+        <Text style={styles.text}>{balance}</Text>
       </View>
       <View style = {styles.marginTop}>
         <Button
