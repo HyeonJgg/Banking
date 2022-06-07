@@ -22,6 +22,28 @@ function CreateAccount({navigation}: {navigation: any}) {
 
   const users = firestore().collection('users');
 
+  let checkaccn = '';
+  let check = '';
+  function checkacc(){
+    users.where('account','==',addacc).get().then((doc)=>{
+      doc.forEach((doc)=>{
+        if(doc.exists){
+          checkaccn = doc.data().account;
+          console.log(1.+checkaccn); //데이터 전체 가져오기
+        }
+      });
+      if(checkaccn==''){
+        if(addacc==''){
+          Alert.alert('계좌번호를 입력해주세요.');
+        }else{
+          Alert.alert('사용하실 수 있는 계좌번호입니다.');
+        }
+      }else{
+        Alert.alert('동일계좌가 존재합니다.');
+      }
+    })
+    console.log(2.+checkaccn);
+  }
   function createUsers() {
     if(addacc == ''){
       Alert.alert('계좌번호를 입력해주세요.');
@@ -59,6 +81,16 @@ function CreateAccount({navigation}: {navigation: any}) {
           value={addacc}
           onChange={e=>setacc(e.nativeEvent.text)} //현재 입력되는 값(없으면 입력 제대로 안됨)
         />
+        <View style={styles.size}>
+          <Button
+            color = {Color.purple}
+            title="계좌확인"
+            onPress={(e)=>{
+              e.preventDefault();
+              checkacc();
+            }}
+          />
+        </View>
       </View>
         <View style = {styles.marginBottom}>
           <Text style={styles.textbold}>이름</Text>
@@ -146,6 +178,11 @@ const styles = StyleSheet.create({
   },
   btntext:{
     fontSize:15
+  },
+  size:{
+    paddingLeft:300,
+    width:380,
+    height:35
   }
 })
 
