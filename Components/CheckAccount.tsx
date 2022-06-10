@@ -1,40 +1,39 @@
 // import 'react-native-gesture-handler';
-import React,{Component, ReactElement, useState, useRef, useId} from 'react';
+import React,{ useState } from 'react';
 import { StyleSheet,View,Text,Button, TextInput, Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
-import { ScreenStackHeaderCenterView } from 'react-native-screens';
 
 const Color = {
   purple : "#dda0dd",
 }
 
 let balance = 0;
-let uid = '';
+let username = '';
+let useracc = '';
 
 function CheckAccount({navigation}: {navigation: any}) {
-  //const navigation = useNavigation();
+ 
   const [inputacc, setacc] = useState(''); // Hook
   const user = firestore().collection('users');
 
   function checkuser(){
     if (inputacc!=''){
-      setacc(inputacc);
       user.where('account','==',inputacc).get().then((doc)=>{
         doc.forEach((doc)=>{
           if(doc.exists){
             console.log(doc.data().account, doc.data().initbalance); //데이터 전체 가져오기
-            // uid = doc.id;
-            // console.log(uid);
             balance=Number(doc.data().initbalance);
+            username = doc.data().name;
+            useracc = doc.data().account; // 유일성 -> 추후 계좌번호로 조회시 하나의 정보만 나옴
             console.log(balance);
           }
         });
         if(balance==0){
           Alert.alert('없는 계좌번호입니다.')
-        }else{
           setacc('');
+        }else{
           navigation.navigate('잔고 현황');
+          // setacc('');
         }
       });
     }else{
@@ -51,8 +50,6 @@ function CheckAccount({navigation}: {navigation: any}) {
           keyboardType='numeric' //키보드 종류
           value={inputacc}
           onChange={e=>setacc(e.nativeEvent.text)}
-          // onChangeText={text=>setacc(text)}
-          // onSubmitEditing={()=>secondRef.current.focus()}
         />
       </View>
       <View style = {styles.marginTop}>
@@ -62,7 +59,6 @@ function CheckAccount({navigation}: {navigation: any}) {
           onPress={(e)=>{
             e.preventDefault();
             checkuser();
-            // navigation.navigate('잔고 현황');
           }}           
         />  
       </View>      
@@ -118,4 +114,4 @@ const styles = StyleSheet.create({
 })
 
 export default CheckAccount
-export { balance}
+export { balance, username, useracc}
