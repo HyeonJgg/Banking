@@ -1,9 +1,7 @@
 // import 'react-native-gesture-handler';
-import React,{Component, ReactElement, useState} from 'react';
+import React,{ useState } from 'react';
 import { StyleSheet,View,ScrollView,Text,Button, TextInput, Alert } from 'react-native';
 import firestore from'@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
-import unregisterNativeAndroidModule from '@react-native-community/cli-platform-android/build/link/unregisterNativeModule';
 
 const Color = {
   purple : "#dda0dd",
@@ -12,9 +10,10 @@ const Color = {
 let newacc = ''
 let newname = ''
 let newinit = ''
+let checkaccn = '';
 
 function CreateAccount({navigation}: {navigation: any}) {
-  // const navigation = useNavigation();
+
   const [addacc, setacc] = useState(''); // Hook
   const [addname, setname] = useState('');
   const [addpass, setpass] = useState('');
@@ -22,14 +21,13 @@ function CreateAccount({navigation}: {navigation: any}) {
 
   const users = firestore().collection('users');
 
-  let checkaccn = '';
-  let check = '';
   function checkacc(){
     users.where('account','==',addacc).get().then((doc)=>{
       doc.forEach((doc)=>{
         if(doc.exists){
           checkaccn = doc.data().account;
-          console.log(1.+checkaccn); //데이터 전체 가져오기
+          console.log('계좌 생성');
+          console.log(doc.data()); //데이터 전체 가져오기
         }
       });
       if(checkaccn==''){
@@ -37,13 +35,14 @@ function CreateAccount({navigation}: {navigation: any}) {
           Alert.alert('계좌번호를 입력해주세요.');
         }else{
           Alert.alert('사용하실 수 있는 계좌번호입니다.');
+          setacc(addacc);
         }
       }else{
         Alert.alert('동일계좌가 존재합니다.');
+        setacc('');
       }
     })
-    console.log(2.+checkaccn);
-  }
+  };
   function createUsers() {
     if(addacc == ''){
       Alert.alert('계좌번호를 입력해주세요.');
@@ -84,7 +83,7 @@ function CreateAccount({navigation}: {navigation: any}) {
         <View style={styles.size}>
           <Button
             color = {Color.purple}
-            title="계좌확인"
+            title="계좌번호 확인"
             onPress={(e)=>{
               e.preventDefault();
               checkacc();
@@ -96,7 +95,6 @@ function CreateAccount({navigation}: {navigation: any}) {
           <Text style={styles.textbold}>이름</Text>
           <TextInput style={styles.textinput}
             placeholder="이름을 입력하세요."
-            // keyboardType='numeric' //키보드 종류
             value={addname}
             onChange={e=>setname(e.nativeEvent.text)} 
           />
@@ -168,19 +166,8 @@ const styles = StyleSheet.create({
   marginTop:{
     marginTop:20
   },
-  btn:{
-    backgroundColor : "#dda0dd",
-    borderRadius:20,
-    width:100,
-    height:50,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  btntext:{
-    fontSize:15
-  },
   size:{
-    paddingLeft:300,
+    paddingLeft:280,
     width:380,
     height:35
   }
