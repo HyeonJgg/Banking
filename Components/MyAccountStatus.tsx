@@ -1,26 +1,65 @@
 // import 'react-native-gesture-handler';
-import React,{Component, ReactElement} from 'react';
-import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
-import {balance} from './CheckAccount';
+import React,{ useState } from 'react';
+import { StyleSheet,View,Text,Button} from 'react-native';
+import firestore from'@react-native-firebase/firestore';
+import { username, useracc} from './CheckAccount';
+
 const Color = {
   purple : "#dda0dd",
 }
 
 function CheckAccount({navigation}: {navigation: any}) {
-  //const navigation = useNavigation();
+
+  const users = firestore().collection('users');
+
+  const [nowmoney, setmoney] = useState(0);
+
+  users.where('account','==',useracc).get().then((doc)=>{
+    doc.forEach((doc)=>{
+      if(doc.exists){
+        setmoney(doc.data().initbalance);
+        console.log('계좌 조회');
+        console.log(doc.data());
+      }
+    });
+  })
+
+  const readbalance=()=>{
+    users.where('account','==',useracc).get().then((doc)=>{
+      doc.forEach((doc)=>{
+        if(doc.exists){
+          setmoney(doc.data().initbalance);
+          console.log('잔액 조회');
+          console.log(doc.data());
+        }
+      });
+    })
+  };
 
   return (
     <View style={styles.container}>
       <View style = {styles.marginBottom}>
-        <Text style={styles.textbold}>잔고 현황</Text>
-        <Text style={styles.text}>{balance}</Text>
+        <Text style={styles.textbold}>{username}님의 잔고 현황</Text>
+        <Text style={styles.text}>{nowmoney}</Text>
       </View>
+      <View style = {styles.size}>
+        <Button
+          color = {Color.purple}
+          title = "잔액 조회"
+          onPress={(e)=>{
+            e.preventDefault();
+            readbalance();
+          }}
+        />
+      </View>  
       <View style = {styles.marginTop}>
         <Button
           color = {Color.purple}
           title = "송금"
-          onPress={()=>
-            navigation.navigate('송금')}
+          onPress={(e)=>{
+            e.preventDefault();
+            navigation.navigate('송금');
+          }}
         />
       </View>  
       <View style = {styles.marginTop}>
@@ -55,28 +94,16 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     marginBottom:10
   },
-  textinput:{
-      height:40,
-      margin:10,
-      borderWidth:1,
-      padding:10
-  },
   marginBottom:{
     marginBottom:10,
   },
   marginTop:{
     marginTop:10
   },
-  btn:{
-    backgroundColor : "#dda0dd",
-    borderRadius:20,
-    width:100,
-    height:50,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  btntext:{
-    fontSize:15
+  size:{
+    paddingLeft:290,
+    width:390,
+    height:35
   }
 })
 
