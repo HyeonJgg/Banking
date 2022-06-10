@@ -1,7 +1,6 @@
 // import 'react-native-gesture-handler';
-import React,{Component, ReactElement} from 'react';
-import { StyleSheet,View,Text,Button, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { StyleSheet,View,Text,Button } from 'react-native';
 import {newacc, newname, newinit} from './CreateAccount';
 
 const Color = {
@@ -9,7 +8,6 @@ const Color = {
 }
 
 function CompleteCreate({navigation}: {navigation: any}) {
-  //const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -62,28 +60,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     marginBottom:10
   },
-  textinput:{
-      height:40,
-      margin:10,
-      borderWidth:1,
-      padding:10
-  },
   marginBottom:{
     marginBottom:10,
   },
   marginTop:{
     marginTop:20
-  },
-  btn:{
-    backgroundColor : "#dda0dd",
-    borderRadius:20,
-    width:100,
-    height:50,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  btntext:{
-    fontSize:15
   }
 })
 

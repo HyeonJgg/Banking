@@ -1,18 +1,12 @@
 // import 'react-native-gesture-handler';
-import React,{Component, ReactElement} from 'react';
+import React from 'react';
 import { StyleSheet,View,Text,Button,TouchableOpacity, Image} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { color } from 'react-native-reanimated';
 
 const Color = {
   purple : "#dda0dd",
 }
-// const Margin = {
-//   marginBottom : 10
-// }
 
 function HomeScreen({navigation}: {navigation: any}) {
-  //const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.centeralign}>
@@ -27,7 +21,6 @@ function HomeScreen({navigation}: {navigation: any}) {
           title = "계좌 생성"
           onPress={()=>
             navigation.navigate('계좌 생성')}
-            //CenterAuthHome으로
         />
       </View>
       <View style = {styles.margin}>
@@ -36,7 +29,6 @@ function HomeScreen({navigation}: {navigation: any}) {
           title = "계좌 조회"
           onPress={()=>
             navigation.navigate('계좌 조회')}
-            //SelfAuthHome으로
         />
       </View>  
     </View>
@@ -47,8 +39,6 @@ const styles = StyleSheet.create({
   container :{
     flex:1,
     padding:10
-    // alignItems:'center',
-    // justifyContent:'center',
   },
   centeralign:{
     alignItems:'center', // 가로 가운데 정렬
@@ -68,9 +58,6 @@ const styles = StyleSheet.create({
     height:50,
     alignItems:'center',
     justifyContent:'center',
-  },
-  btntext:{
-    fontSize:15
   }
 })
 
