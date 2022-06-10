@@ -13,6 +13,7 @@ import Complete from './Components/CompleteCreate'
 import CheckAcc from './Components/CheckAccount'
 import MyAcc from './Components/MyAccountStatus'
 import Remit from './Components/Remit'
+import CompletePost from './Components/CompletePost';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +28,7 @@ function App() {
         <Stack.Screen name='계좌 조회' component={CheckAcc}/>
         <Stack.Screen name='잔고 현황' component={MyAcc}/>
         <Stack.Screen name='송금' component={Remit}/>
+        <Stack.Screen name='송금 완료' component={CompletePost}/>
       </Stack.Navigator>
     </NavigationContainer>
     )
