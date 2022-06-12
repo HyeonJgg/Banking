@@ -35,10 +35,12 @@ function CreateAccount({navigation}: {navigation: any}) {
           Alert.alert('계좌번호를 입력해주세요.');
         }else{
           Alert.alert('사용하실 수 있는 계좌번호입니다.');
+          checkaccn='';
           setacc(addacc);
         }
       }else{
         Alert.alert('동일계좌가 존재합니다.');
+        checkaccn='';
         setacc('');
       }
     })
