@@ -7,7 +7,7 @@ const Color = {
   purple : "#dda0dd",
 }
 
-let balance = 0;
+// let balance = 0;
 let username = '';
 let useracc = '';
 
@@ -21,19 +21,16 @@ function CheckAccount({navigation}: {navigation: any}) {
       user.where('account','==',inputacc).get().then((doc)=>{
         doc.forEach((doc)=>{
           if(doc.exists){
-            console.log(doc.data().account, doc.data().initbalance); //데이터 전체 가져오기
-            balance=Number(doc.data().initbalance);
-            username = doc.data().name;
-            useracc = doc.data().account; // 유일성 -> 추후 계좌번호로 조회시 하나의 정보만 나옴
-            console.log(balance);
+              console.log(doc.data().account, doc.data().initbalance); //데이터 전체 가져오기
+            // balance=Number(doc.data().initbalance);
+              username = doc.data().name;
+              useracc = doc.data().account; // 유일성 -> 추후 계좌번호로 조회시 하나의 정보만 나옴
+              navigation.navigate('잔고 현황');
           }
         });
-        if(balance==0){
-          Alert.alert('없는 계좌번호입니다.')
+        if(useracc==''){
+          Alert.alert('없는 계좌입니다.');
           setacc('');
-        }else{
-          navigation.navigate('잔고 현황');
-          // setacc('');
         }
       });
     }else{
@@ -114,4 +111,4 @@ const styles = StyleSheet.create({
 })
 
 export default CheckAccount
-export { balance, username, useracc}
+export { username, useracc}
