@@ -66,6 +66,10 @@ function CheckAccount({navigation}: {navigation: any}) {
         <Button
           color = {Color.purple}
           title = "거래내역"
+          onPress={(e)=>{
+            e.preventDefault();
+            navigation.navigate('거래내역');
+          }}
         />
       </View>
     </View>
