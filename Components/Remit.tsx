@@ -42,11 +42,13 @@ function CreateAccount({navigation}: {navigation: any}) {
           Alert.alert('계좌번호를 입력해주세요.');
         }else{
           Alert.alert('받으실 분의 계좌가 존재하지 않습니다.');
+          getname='';
           checkaccn=='';
           setacc('');
         }
       }else if(checkaccn==useracc){
         Alert.alert('출금계좌와 입금계좌가 동일합니다.');
+        getname='';
         checkaccn=='';
         setacc('');
       }
@@ -58,9 +60,10 @@ function CreateAccount({navigation}: {navigation: any}) {
     })
     setacc('');
   };
-  let checkpass=0;
+  
   let checkbtn = 0;
   function checkpassword(){
+    let checkpass=0;
     users.where('account', '==', useracc).get().then((doc)=>{
       doc.forEach((doc)=>{
         if(doc.exists){

@@ -7,23 +7,26 @@ import {username, useracc} from './CheckAccount';
 const Color = {
   purple : "#dda0dd",
 }
-
+// let content = '';
 function RecordList({navigation}: {navigation: any}) {
-    const [content, setcontent]=useState('');
-
     const records = firestore().collection('records')
+
+    const [content, setcontent]=useState('');
+    // let content = '';
     let array = [1+'\n', 2, 3, 4, 5]
     let id = 0;
-    // let content = ''
+   
     records.where('myaccount','==',useracc).get().then((doc)=>{
-        doc.forEach((doc)=>{
-          if(doc.exists){
-            console.log('거래내역')
-            console.log(doc.data())
-            setcontent(doc.data().record)          
-          }
-        });
-      })
+      doc.forEach((doc)=>{
+        if(doc.exists){
+          console.log('거래내역');
+          // console.log(doc.data());
+          setcontent(doc.data().record) ;
+          // content = doc.data().record;
+          console.log(content);  
+        } 
+      });
+    })
 
   return (
     <View style={styles.container}>
@@ -38,8 +41,11 @@ function RecordList({navigation}: {navigation: any}) {
         <Button
             color = {Color.purple}
             title = "확인"
-            onPress={()=>
-                navigation.navigate('잔고 현황')}
+            onPress={()=>{
+              navigation.navigate('잔고 현황');
+              setcontent('');
+              // content='';
+            }}
         />  
       </View>      
     </View>
